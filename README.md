@@ -18,7 +18,7 @@ La app muestra:
 - **Caché en `localStorage`** (bonus), con un contador de cuántas respuestas vinieron de la red y
   cuántas de la caché.
 
-## Puesta en marcha
+## Cómo probarlo
 
 Requisitos: Node.js 20.19+ o 22.12+.
 
@@ -93,9 +93,32 @@ Se guardan las respuestas **ya adaptadas** (unos cientos de bytes por Pokémon e
 muestra cuántas respuestas vinieron de la red y cuántas de la caché, y hay un botón para vaciarla.
 Se puede inspeccionar en *DevTools → Application → Local Storage* (claves `async-odyssey:v1:…`).
 
-## Declaración de uso de IA
+## Uso de IA
 
-Ver [DECLARACION_IA.md](DECLARACION_IA.md).
+Usé **Claude Code** (modelo Claude Opus 5.5, de Anthropic) dentro de VS Code. La IA generó el
+código de todos los módulos, los estilos y este README, y lo fue subiendo en commits por fases
+(estructura con Vite → capa de API → render con estados → caché y robustez → documentación).
+
+Prompts reales relevantes:
+
+- *"Te he añadido dos archivos del temario que hemos dado en la asignatura, tengo que hacer un
+  proyecto [...] también deberás hacer 5 commits en GitHub de distintas fases a medida que
+  avanza."* (junto con los PDF de las Unidades 1 y 2 y el enunciado de la Misión 2).
+- *"Necesito que me ayudes paso a paso a vincular el GitHub para que puedas hacer tú los
+  commits."*
+
+Cómo verifiqué lo generado:
+
+- Antes de cada commit, la IA ejecutó los módulos con Node contra la PokeAPI real: carga en
+  paralelo, uso de la caché en la segunda petición, error 404 legible y datos vacíos o
+  malformados. También comprobé que `npm run build` compila sin errores.
+- Probé la app en el navegador con `npm run dev`: selección de tipos, búsqueda, ordenación,
+  "Cargar más", el estado de error simulando la red desconectada (DevTools → Network →
+  Offline) y la caché en *Application → Local Storage*.
+- Estudié el código con una guía de defensa para poder explicar cada parte.
+
+Qué escribí a mano: el código fue generado por la IA; mi trabajo fue dirigir el proyecto por
+fases, crear y vincular el repositorio público, probar la aplicación y revisar el código.
 
 ## Créditos
 

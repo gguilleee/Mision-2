@@ -48,13 +48,13 @@ const CLAVES_STATS = {
 export function adaptarPokemon(json) {
   if (!json || !Number.isInteger(json.id)) return null; // dato inservible
 
+  const statsApi = json.stats ?? [];
   const stats = Object.fromEntries(
-    Object.values(CLAVES_STATS).map((clave) => [clave, 0]),
+    Object.entries(CLAVES_STATS).map(([nombreApi, clave]) => [
+      clave,
+      Number(statsApi.find((s) => s?.stat?.name === nombreApi)?.base_stat) || 0,
+    ]),
   );
-  for (const { stat, base_stat: valor } of json.stats ?? []) {
-    const clave = CLAVES_STATS[stat?.name];
-    if (clave) stats[clave] = Number(valor) || 0;
-  }
 
   return {
     id: json.id,

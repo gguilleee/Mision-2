@@ -1,0 +1,21 @@
+:root {
+  --papel: #f4f1e8;
+  --tinta: #1b2333;
+  --tinta-suave: #5a6375;
+  --acento: #e4572e;
+  --borde: #d8d2c2;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--tinta);
+  background: var(--papel);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; }
+
+.cabecera, .contenido, .pie { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.cabecera { padding-top: 40px; padding-bottom: 16px; }
+.cabecera__antetitulo { margin: 0; text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; color: var(--acento); font-weight: 700; }
+.cabecera__titulo { margin: .2em 0; font-size: clamp(2rem, 5vw, 3rem); }
+.cabecera__lema { margin: 0; color: var(--tinta-suave); }
+.seccion__titulo { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-suave); }
+.pie { padding: 32px 16px; color: var(--tinta-suave); font-size: .85rem; }

@@ -130,6 +130,16 @@ fases, crear y vincular el repositorio público, probar la aplicación y revisar
    Fuego (más de 100 en Agua) antes de enseñar nada. Preferí que la página cargue rápido y haga
    solo las peticiones necesarias, aunque el orden por stats sea parcial hasta cargarlo todo.
 
+2. **Las respuestas que llegan tarde se ignoran con un contador `turno`, no se cancelan.** Cada
+   carga recibe un número (`const miTurno = ++turno`) y, al volver del `await`, si
+   `miTurno !== turno` es que el usuario ya ha cambiado de tipo y la respuesta se descarta sin
+   pintarla. Descarté `AbortController`, que cancelaría la petición de verdad: obliga a pasar la
+   señal desde `main.js` hasta `fetch` a través de `pokeapi.js` y `http.js`, y a distinguir el
+   error de "petición abortada" de los errores reales para no enseñar "No se pudo conectar" al
+   cambiar de tipo. Además, como `pedirJson` guarda la respuesta en caché antes de devolverla, lo
+   descargado no se pierde: si se vuelve a ese tipo, carga al instante. El coste es que, con
+   conexiones lentas, las peticiones viejas siguen gastando red aunque no se vayan a mostrar.
+
 ## Créditos
 
 Datos e imágenes: [PokeAPI](https://pokeapi.co) y su repositorio de sprites. Pokémon y sus

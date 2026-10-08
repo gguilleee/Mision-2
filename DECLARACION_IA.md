@@ -16,9 +16,14 @@
 - Elegir la asignatura, el enunciado y los apuntes como referencia, y revisar que el código
   usa lo visto en clase (async/await, `response.ok`, métodos de array inmutables, módulos ES,
   closures, `localStorage`).
-- Ejecutar la aplicación con `npm run dev` y probar los estados de carga, error y vacío.
-- *(Completar: cambios propios, decisiones de diseño, qué partes entiendo y sabría defender y
-  qué he modificado respecto a lo generado.)*
+- Pedir que el trabajo se dividiera en fases con un commit por cada una, crear el repositorio
+  público en GitHub y vincularlo al proyecto.
+- Instalar Node.js, ejecutar la aplicación con `npm run dev` y probarla en el navegador:
+  selección de tipos, búsqueda, ordenación, "Cargar más", estado de error simulando la red
+  desconectada desde DevTools y funcionamiento de la caché en *Application → Local Storage*.
+- Repasar el código para entenderlo y poder defenderlo: capa HTTP (`response.ok`, timeout y
+  caché), el control de respuestas tardías en `main.js` y las transformaciones con `reduce` y
+  `Object.groupBy`.
 
 ## Compromiso
 

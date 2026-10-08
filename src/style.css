@@ -109,6 +109,8 @@ body {
 .campo input:focus, .campo select:focus { border-color: var(--tinta); outline: none; }
 
 .barra-estado { margin: 0 0 12px; font-size: .85rem; color: var(--tinta-suave); min-height: 1.5em; }
+.aviso { color: var(--error); font-weight: 600; }
+.enlace { font: inherit; font-weight: 700; color: var(--error); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 
 /* ---------- Resumen ---------- */
 

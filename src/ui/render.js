@@ -73,6 +73,23 @@ export function pintarVacio(contenedor, mensaje) {
   contenedor.replaceChildren(crear('p', { clase: 'estado estado--vacio', texto: mensaje }));
 }
 
+/* ---------- Barra de estado ---------- */
+
+export function pintarBarraEstado(contenedor, { mostrados, coincidencias, perdidos, metricas }, alReintentar) {
+  const partes = [`Mostrando ${mostrados} de ${coincidencias}`];
+  if (metricas.red > 0 || metricas.cache > 0) {
+    partes.push(`${metricas.red} desde la red, ${metricas.cache} desde la caché`);
+  }
+  const hijos = [crear('span', { texto: partes.join(' · ') })];
+
+  if (perdidos > 0) {
+    const reintentar = crear('button', { clase: 'enlace', texto: 'reintentar', atributos: { type: 'button' } });
+    reintentar.addEventListener('click', alReintentar, { once: true });
+    hijos.push(crear('span', { clase: 'aviso', texto: ` · ⚠ ${perdidos} no se pudieron cargar, ` }), reintentar);
+  }
+  contenedor.replaceChildren(...hijos);
+}
+
 /* ---------- Ficha del tipo ---------- */
 
 function filaRelacion(etiqueta, tipos) {

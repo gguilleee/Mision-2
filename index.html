@@ -23,8 +23,31 @@
       <section id="expedicion" aria-labelledby="titulo-expedicion" hidden>
         <h2 id="titulo-expedicion" class="seccion__titulo">2 · Diario de campo</h2>
         <div id="ficha" class="ficha"></div>
+
+        <div id="controles" class="controles" hidden>
+          <label class="campo">
+            Buscar en este tipo
+            <input id="buscador" type="search" placeholder="Nombre o número…" autocomplete="off" />
+          </label>
+          <label class="campo">
+            Ordenar los mostrados por
+            <select id="orden">
+              <option value="id">Número de Pokédex</option>
+              <option value="nombre">Nombre (A-Z)</option>
+              <option value="total">Stats totales</option>
+              <option value="velocidad">Velocidad</option>
+              <option value="peso">Peso</option>
+            </select>
+          </label>
+          <button id="vaciar-cache" class="boton boton--secundario" type="button">Vaciar caché</button>
+        </div>
+
+        <p id="barra-estado" class="barra-estado" aria-live="polite"></p>
         <div id="resumen" class="resumen"></div>
         <div id="resultados" class="resultados" aria-live="polite"></div>
+        <div class="mas">
+          <button id="cargar-mas" class="boton" type="button" hidden>Cargar más</button>
+        </div>
       </section>
     </main>
 

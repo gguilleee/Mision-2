@@ -120,6 +120,16 @@ Cómo verifiqué lo generado:
 Qué escribí a mano: el código fue generado por la IA; mi trabajo fue dirigir el proyecto por
 fases, crear y vincular el repositorio público, probar la aplicación y revisar el código.
 
+## Autopsia
+
+1. **La ordenación solo afecta a los Pokémon ya cargados.** Al elegir un tipo cargo los 24
+   primeros y el selector "Ordenar los mostrados por" ordena solo esos. Si se pulsa "Cargar
+   más", se reordena todo lo cargado, y al llegar al final el orden ya es el de todo el tipo.
+   Descarté descargar todas las especies del tipo nada más entrar para ordenarlas globalmente:
+   las estadísticas solo vienen en el detalle de cada Pokémon, así que serían 81 peticiones en
+   Fuego (más de 100 en Agua) antes de enseñar nada. Preferí que la página cargue rápido y haga
+   solo las peticiones necesarias, aunque el orden por stats sea parcial hasta cargarlo todo.
+
 ## Créditos
 
 Datos e imágenes: [PokeAPI](https://pokeapi.co) y su repositorio de sprites. Pokémon y sus
